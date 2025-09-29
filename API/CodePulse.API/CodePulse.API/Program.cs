@@ -1,5 +1,7 @@
 
 using CodePulse.API.Data;
+using CodePulse.API.Respositories.Implementation;
+using CodePulse.API.Respositories.Interface;
 using Microsoft.EntityFrameworkCore;
 namespace CodePulse.API
 {
@@ -20,6 +22,8 @@ namespace CodePulse.API
             {
                options.UseSqlServer(builder.Configuration.GetConnectionString("CodePulseConnectionString"));
             });
+
+            builder.Services.AddScoped<ICategoryRespository, CategoryRespository>();
 
             var app = builder.Build();
 
